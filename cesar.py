@@ -19,3 +19,21 @@ def chiffre_message(message,k):
 	message_crypte = "".join(message_crypte)#liste -> chaine 
 	return (message_crypte)
 
+#dechiffrement de message 
+
+def dechiffre_nombre(n,k):
+	return (n-k)%26
+	
+def dechiffre_message(message, k):
+	message_decrypte = []
+	for caractere in message:
+		if caractere == " ":
+			caractere_decrypte = caractere
+		else:
+			caractere = caractere.upper()
+			char2int = ord(caractere) - 65
+			char2int_decrypte = dechiffre_nombre(char2int, k)
+			caractere_decrypte = chr(char2int_decrypte + 65)
+		message_decrypte.append(caractere_decrypte)
+	message_decrypte = "".join(message_decrypte)
+	return (message_decrypte)
