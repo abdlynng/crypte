@@ -8,7 +8,7 @@ def chiffre_nombre(n,k):
 def chiffre_message(message,k):
 	message_crypte = []
 	for caractere in message:
-		if caractere == " ":
+		if caractere == " " or caractere == "\t" or caractere =="\n":
 			caractere_crypte = caractere
 		else:
 			caractere = caractere.upper()
@@ -27,7 +27,7 @@ def dechiffre_nombre(n,k):
 def dechiffre_message(message, k):
 	message_decrypte = []
 	for caractere in message:
-		if caractere == " ":
+		if caractere == " " or caractere == "\t" or caractere =="\n":
 			caractere_decrypte = caractere
 		else:
 			caractere = caractere.upper()
@@ -37,3 +37,19 @@ def dechiffre_message(message, k):
 		message_decrypte.append(caractere_decrypte)
 	message_decrypte = "".join(message_decrypte)
 	return (message_decrypte)
+
+def chiffre_fichier(fichier_clair, k, fichier_crypte):
+    f = open(fichier_clair,"r")
+    d = open(fichier_crypte, "w")
+    for ligne in f :
+        d.write(chiffre_message(ligne,k))
+    f.close()
+    d.close()
+
+def dechiffre_fichier(fichier_crypte, k, fichier_clair):
+    f = open(fichier_crypte,"r")
+    d = open(fichier_clair, "w")
+    for ligne in f :
+        d.write(dechiffre_message(ligne,k))
+    f.close()
+    d.close()
