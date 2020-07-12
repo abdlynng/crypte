@@ -30,4 +30,16 @@ def decoupage_bloc(message, k):
         i = i+1
         n = n+k   
     return blocs
-        
+import cesar 
+def chiffre_message(message,cle):
+    blocs = decoupage_bloc(message,len(cle))
+    blocs_crypte = []
+    
+    for bloc in blocs:
+        bloc_crypte = []
+        tempon = []
+        for i in range(0,len(bloc)):
+            tempon.append(cesar.chiffre_message(bloc[i],cle[i])) 
+        bloc_crypte = "".join(tempon)
+        blocs_crypte.append(bloc_crypte)
+    return blocs_crypte
