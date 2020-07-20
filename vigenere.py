@@ -43,3 +43,13 @@ def chiffre_message(message,cle):
         bloc_crypte = "".join(tempon)
         blocs_crypte.append(bloc_crypte)
     return blocs_crypte
+
+def dechiffre_blocs(message, cle):
+    blocs = message.split(" ")
+    blocs_decrypte = []
+    for bloc in blocs:
+        bloc_decrypte = []
+        for i in range(0,len(bloc)):
+            bloc_decrypte.append(cesar.dechiffre_message(bloc[i], cle[i]))
+        blocs_decrypte.append("".join(bloc_decrypte))
+    return blocs_decrypte 
